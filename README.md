@@ -8,7 +8,7 @@ Este repositorio está organizado por asignaturas y contiene materiales de estud
 
 | Carpeta | Contenido | Comentario |
 |--------:|----------|-----------|
-| `INF412-Sistemas-Informacion-II/` | Apuntes, lecturas, código y proyecto del curso | Ej.: `Apuntes/Primera-Clase.md` |
+| `INF412-Sistemas-Informacion-II/` | Apuntes, lecturas, código y proyecto del curso | Ej.: `Apuntes/2026-02-03-Primera-Clase.md` |
 | `INF413-Sistemas-Operativos-II/` | Lecturas y apuntes sobre SO | Ej.: `Lectura/01-Almacenamiento-Secundario.md` |
 | `INF423-Redes-II/` | Lecturas y material de redes | Carpeta `Lectura/` para resúmenes y apuntes |
 | `INF432-Sistemas-Soporte-Decision/` | Lecturas y apuntes de soporte a la decisión | Contiene resúmenes y material adicional |
