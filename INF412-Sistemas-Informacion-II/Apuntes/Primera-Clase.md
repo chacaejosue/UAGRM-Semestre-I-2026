@@ -64,8 +64,6 @@ tabla de estructura de título:
 - Documenta los supuestos y requisitos iniciales en un acta de reunión.
 - Justifica cada herramienta mencionada: ¿por qué usarás MySQL y no SQLite? ¿Por qué React en vez de vanilla JS?
 
-> 📌 Tip: crea una checklist de requisitos y alcances para evitar cambios de alcance (scope creep).
-
 ---
 
 ## 🗂 Ejemplo visual: flujo básico de comunicación con el cliente
@@ -79,20 +77,5 @@ flowchart LR
     E --> F[Soporte y mantenimiento]
 ```
 
-*(Puedes reemplazar este diagrama con una imagen real si prefieres.)*
 
----
-
-## 📎 Consejos de estilo para los apuntes
-
-- Usa encabezados claros y consistentes (`##` para secciones principales).
-- Emplea listas numeradas o con viñetas para pasos o elementos relacionados.
-- Agrega tablas para comparar conceptos o mostrar estructuras.
-- Inserta diagramas Mermaid (como el anterior) para esquemas o flechas.
-- Incluye ejemplos prácticos y notas de "código" entre backticks cuando correspondan.
-- Conserva siempre la fecha de la clase al inicio para orden cronológico.
-
----
-
-¡Con esta plantilla tus apuntes quedarán legibles, dinámicos y útiles tanto para estudiar como para consultar más adelante! Si necesitas ayuda con otro archivo o diagrama, házmelo saber.
 
