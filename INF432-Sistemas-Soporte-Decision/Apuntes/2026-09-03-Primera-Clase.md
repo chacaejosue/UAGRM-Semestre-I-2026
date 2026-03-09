@@ -29,7 +29,7 @@ En el contexto de la materia **INF432 - Sistemas de Soporte para la Toma de Deci
 
 **Pasos básicos:**
 
-1. **Acceso**: Ingresa a [looker.studio](https://looker.studio) con tu cuenta de Google
+1. **Acceso**: Ingresa a [looker.studio](https://lookerstudio.google.com/reporting/86a3457a-bab2-4c2d-8e0b-20e13375cd7a) con tu cuenta de Google
 2. **Crear nuevo informe**: Haz clic en "Crear" → "Informe en blanco"
 3. **Conectar datos**: 
    - Selecciona la fuente de datos (Google Analytics, Sheets, MySQL, etc.)
@@ -42,6 +42,8 @@ En el contexto de la materia **INF432 - Sistemas de Soporte para la Toma de Deci
 6. **Compartir el informe**: Genera link o invita colaboradores
 7. **Ver en tiempo real**: Actualización automática según los datos fuente
 
+En este caso ese link ya nos lleva al documento grupal.
+Este nos lleva al documento de [Google.Sheets](https://docs.google.com/spreadsheets/d/1SjFg4Gm5ezLaMTCFq1zjyRhfAHuy0H2Z6MF3KYsCsbQ/edit?usp=sharing)
 **Ejemplo de caso de uso:**
 Un gerente de ventas podría usar Looker Studio para monitorear:
 - Ventas por región (gráfico de barras)
