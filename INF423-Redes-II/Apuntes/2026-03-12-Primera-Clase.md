@@ -1,5 +1,3 @@
-Máquina virtual con windows server 2012 o 
-
 ### Pasos para instalar Windows Server 2012 en VMware Workstation
 
 1. Descargar la ISO de Windows Server 2012 (disponible en MSDN o el sitio oficial de Microsoft).
@@ -27,23 +25,12 @@ Máquina virtual con windows server 2012 o
 La finalidad de esto es que porque en esta materia nos vamos a dedicar a las capas de aplicacion y de transporte
 ## Modelo TCP/IP
 
-```
-+---------------------------+--------------------------------------------------------------+
-|          CAPA             |                       QUE HACE                               |
-+---------------------------+--------------------------------------------------------------+
-| 4. Aplicacion             | Genera y procesa los datos del usuario.                      |
-|                           | Protocolos: HTTP (web), FTP (archivos), SMTP (correo), DNS.  |
-+---------------------------+--------------------------------------------------------------+
-| 3. Transporte             | Divide los datos en segmentos y controla su entrega.         |
-|                           | Protocolos: TCP (fiable) o UDP (rapido).                     |
-+---------------------------+--------------------------------------------------------------+
-| 2. Internet               | Enruta los paquetes entre redes distintas usando IP.         |
-|                           | Protocolos: IP, ICMP.                                        |
-+---------------------------+--------------------------------------------------------------+
-| 1. Acceso a la Red        | Transmite los datos fisicamente por cables o Wi-Fi.          |
-|                           | Protocolos: Ethernet, Wi-Fi (802.11).                        |
-+---------------------------+--------------------------------------------------------------+
-```
+| Capa | Qué hace | Protocolos |
+|------|----------|------------|
+| **4. Aplicación** | Genera y procesa los datos del usuario | HTTP, FTP, SMTP, DNS |
+| **3. Transporte** | Divide los datos en segmentos y controla su entrega | TCP, UDP |
+| **2. Internet** | Enruta los paquetes entre redes distintas usando IP | IP, ICMP |
+| **1. Acceso a la Red** | Transmite los datos físicamente por cables o Wi-Fi | Ethernet, Wi-Fi (802.11) |
 
 
 # Capa de Transporte
@@ -54,47 +41,36 @@ Las aplicaciones generan datos, que son enviados a la red y viajan por cada una 
 
 Imagina que mandas una carta: la doblas, la metes en un sobre, el sobre en una caja, y la caja en un camión. Cada "envoltura" lleva instrucciones para esa etapa del viaje. Así mismo funciona en las redes:
 
-```
-EMISOR
+```mermaid
+flowchart TD
+    A["🖥️ EMISOR\nCapa Aplicación\nDato: 'Hola'"]
+    B["Capa Transporte\n[ Cab.Transporte | Dato ]\n→ Segmento\npuerto origen · puerto destino"]
+    C["Capa Internet\n[ Cab.IP | Cab.Transporte | Dato ]\n→ Paquete\nIP origen · IP destino"]
+    D["Capa Acceso a la Red\n[ Cab.Enlace | Cab.IP | Cab.T | Dato | Cola ]\n→ Frame\nMAC origen · MAC destino"]
+    E["🌐 RED"]
 
-  Capa Aplicacion:   [ Dato: "Hola" ]
-                              |
-                              v  (agrega cabecera de aplicacion)
-  Capa Transporte:   [ Cab.Transporte | Dato: "Hola" ]  --> Segmento
-                     (puerto origen, puerto destino)
-                              |
-                              v  (agrega cabecera de red)
-  Capa Internet:     [ Cab.IP | Cab.Transporte | Dato ]  --> Paquete
-                     (IP origen, IP destino)
-                              |
-                              v  (agrega cabecera de enlace)
-  Capa Acceso Red:   [ Cab.Enlace | Cab.IP | Cab.T | Dato | Cola ]  --> Frame
-                     (MAC origen, MAC destino)
-                              |
-                              v
-                           [RED]
+    A -->|"+ cabecera de transporte"| B
+    B -->|"+ cabecera de red"| C
+    C -->|"+ cabecera de enlace"| D
+    D --> E
 ```
 
 ### Desencapsulamiento (lado del receptor)
 
 En el destino el proceso es al revés: cada capa lee su cabecera, la retira y pasa el resto a la capa de arriba.
 
-```
-                           [RED]
-                              |
-                              v
-  Capa Acceso Red:   Lee y retira Cab.Enlace  -->  [ Cab.IP | Cab.T | Dato ]
-                              |
-                              v
-  Capa Internet:     Lee y retira Cab.IP      -->  [ Cab.Transporte | Dato ]
-                              |
-                              v
-  Capa Transporte:   Lee y retira Cab.Trans.  -->  [ Dato: "Hola" ]
-                              |
-                              v
-  Capa Aplicacion:   Recibe el dato original: "Hola" ✓
+```mermaid
+flowchart TD
+    E["🌐 RED"]
+    D["Capa Acceso a la Red\nRetira Cab.Enlace\n→ [ Cab.IP | Cab.T | Dato ]"]
+    C["Capa Internet\nRetira Cab.IP\n→ [ Cab.Transporte | Dato ]"]
+    B["Capa Transporte\nRetira Cab.Transporte\n→ [ Dato: 'Hola' ]"]
+    A["🖥️ RECEPTOR\nCapa Aplicación\nRecibe: 'Hola' ✓"]
 
-RECEPTOR
+    E --> D
+    D -->|"retira cabecera de enlace"| C
+    C -->|"retira cabecera de red"| B
+    B -->|"retira cabecera de transporte"| A
 ```
 
 La capa de transporte viene a ser el intermedio para las aplicaciones
@@ -182,18 +158,21 @@ Un equipo puede tener múltiples conexiones simultáneas. Para manejar esto sin 
 Proceso donde la capa de transporte combina datos de múltiples aplicaciones en un flujo único hacia la red, identificando cada uno por puertos.
 
 ### Gráfico de Multiplexación
-```
-+-------------+     +-------------+     +-----------------+
-| Aplicación  | --> | Aplicación  | --> | Capa de         |
-| 1 (Puerto   |     | 2 (Puerto   |     | Transporte      |
-| 80)         |     | 443)        |     |                 |
-+-------------+     +-------------+     | Combina datos   |
-                                        | en un flujo     |
-+-------------+     +-------------+     | único --> Red   |
-| Aplicación  | --> | Aplicación  | --> +-----------------+
-| 3 (Puerto   |     | 4 (Puerto   |
-| 22)         |     | 53)         |
-+-------------+     +-------------+
+
+```mermaid
+flowchart LR
+    A1["App 1\nPuerto 80\n(HTTP)"]
+    A2["App 2\nPuerto 443\n(HTTPS)"]
+    A3["App 3\nPuerto 22\n(SSH)"]
+    A4["App 4\nPuerto 53\n(DNS)"]
+    T["Capa de Transporte\nCombina todo\nen un flujo único"]
+    R["🌐 Red"]
+
+    A1 --> T
+    A2 --> T
+    A3 --> T
+    A4 --> T
+    T --> R
 ```
 
 Esto permite compartir el canal de red eficientemente.
@@ -203,23 +182,19 @@ Esto permite compartir el canal de red eficientemente.
 Proceso inverso: la capa de transporte recibe el flujo de la red y lo distribuye a la aplicación correcta usando puertos.
 
 ### Gráfico de Desmultiplexación
-```
-Red --> +-----------------+     +-------------+
-        | Capa de         | --> | Aplicación  |
-        | Transporte      |     | 1 (Puerto   |
-        |                 |     | 80)         |
-        | Distribuye      |     +-------------+
-        | datos por       |
-        | puertos         |     +-------------+
-        +-----------------+ --> | Aplicación  |
-                                | 2 (Puerto   |
-                                | 443)        |
-                                +-------------+
-                                +-------------+
-                                | Aplicación  |
-                                | 3 (Puerto   |
-                                | 22)         |
-                                +-------------+
+
+```mermaid
+flowchart LR
+    R["🌐 Red"]
+    T["Capa de Transporte\nDistribuye por puerto\nde destino"]
+    A1["App 1\nPuerto 80\n(HTTP)"]
+    A2["App 2\nPuerto 443\n(HTTPS)"]
+    A3["App 3\nPuerto 22\n(SSH)"]
+
+    R --> T
+    T -->|"puerto 80"| A1
+    T -->|"puerto 443"| A2
+    T -->|"puerto 22"| A3
 ```
 
 Ejemplo: Un paquete llega con puerto destino 80, se dirige a la aplicación web.
