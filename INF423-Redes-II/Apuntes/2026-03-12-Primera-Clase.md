@@ -43,10 +43,10 @@ Imagina que mandas una carta: la doblas, la metes en un sobre, el sobre en una c
 
 ```mermaid
 flowchart TD
-    A["🖥️ EMISOR\nCapa Aplicación\nDato: 'Hola'"]
-    B["Capa Transporte\n[ Cab.Transporte | Dato ]\n→ Segmento\npuerto origen · puerto destino"]
-    C["Capa Internet\n[ Cab.IP | Cab.Transporte | Dato ]\n→ Paquete\nIP origen · IP destino"]
-    D["Capa Acceso a la Red\n[ Cab.Enlace | Cab.IP | Cab.T | Dato | Cola ]\n→ Frame\nMAC origen · MAC destino"]
+  A["🖥️ EMISOR<br/>Capa Aplicación<br/>Dato: 'Hola'"]
+  B["Capa Transporte<br/>[ Cab.Transporte | Dato ]<br/>→ Segmento<br/>puerto origen · puerto destino"]
+  C["Capa Internet<br/>[ Cab.IP | Cab.Transporte | Dato ]<br/>→ Paquete<br/>IP origen · IP destino"]
+  D["Capa Acceso a la Red<br/>[ Cab.Enlace | Cab.IP | Cab.T | Dato | Cola ]<br/>→ Frame<br/>MAC origen · MAC destino"]
     E["🌐 RED"]
 
     A -->|"+ cabecera de transporte"| B
@@ -62,10 +62,10 @@ En el destino el proceso es al revés: cada capa lee su cabecera, la retira y pa
 ```mermaid
 flowchart TD
     E["🌐 RED"]
-    D["Capa Acceso a la Red\nRetira Cab.Enlace\n→ [ Cab.IP | Cab.T | Dato ]"]
-    C["Capa Internet\nRetira Cab.IP\n→ [ Cab.Transporte | Dato ]"]
-    B["Capa Transporte\nRetira Cab.Transporte\n→ [ Dato: 'Hola' ]"]
-    A["🖥️ RECEPTOR\nCapa Aplicación\nRecibe: 'Hola' ✓"]
+  D["Capa Acceso a la Red<br/>Retira Cab.Enlace<br/>→ [ Cab.IP | Cab.T | Dato ]"]
+  C["Capa Internet<br/>Retira Cab.IP<br/>→ [ Cab.Transporte | Dato ]"]
+  B["Capa Transporte<br/>Retira Cab.Transporte<br/>→ [ Dato: 'Hola' ]"]
+  A["🖥️ RECEPTOR<br/>Capa Aplicación<br/>Recibe: 'Hola' ✓"]
 
     E --> D
     D -->|"retira cabecera de enlace"| C
@@ -161,11 +161,11 @@ Proceso donde la capa de transporte combina datos de múltiples aplicaciones en 
 
 ```mermaid
 flowchart LR
-    A1["App 1\nPuerto 80\n(HTTP)"]
-    A2["App 2\nPuerto 443\n(HTTPS)"]
-    A3["App 3\nPuerto 22\n(SSH)"]
-    A4["App 4\nPuerto 53\n(DNS)"]
-    T["Capa de Transporte\nCombina todo\nen un flujo único"]
+  A1["App 1<br/>Puerto 80<br/>(HTTP)"]
+  A2["App 2<br/>Puerto 443<br/>(HTTPS)"]
+  A3["App 3<br/>Puerto 22<br/>(SSH)"]
+  A4["App 4<br/>Puerto 53<br/>(DNS)"]
+  T["Capa de Transporte<br/>Combina todo<br/>en un flujo único"]
     R["🌐 Red"]
 
     A1 --> T
@@ -186,10 +186,10 @@ Proceso inverso: la capa de transporte recibe el flujo de la red y lo distribuye
 ```mermaid
 flowchart LR
     R["🌐 Red"]
-    T["Capa de Transporte\nDistribuye por puerto\nde destino"]
-    A1["App 1\nPuerto 80\n(HTTP)"]
-    A2["App 2\nPuerto 443\n(HTTPS)"]
-    A3["App 3\nPuerto 22\n(SSH)"]
+  T["Capa de Transporte<br/>Distribuye por puerto<br/>de destino"]
+  A1["App 1<br/>Puerto 80<br/>(HTTP)"]
+  A2["App 2<br/>Puerto 443<br/>(HTTPS)"]
+  A3["App 3<br/>Puerto 22<br/>(SSH)"]
 
     R --> T
     T -->|"puerto 80"| A1
