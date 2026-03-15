@@ -5,11 +5,11 @@
 3. Seleccionar **"Typical (recommended)"** y hacer clic en **Next**.
 4. Elegir **"Installer disc image file (iso)"** y seleccionar la ISO descargada.
 5. Asignar un nombre a la VM y la ubicación donde se guardará.
-6. Definir el tamaño del disco (mínimo recomendado: 40 GB) y hacer clic en **Next**.
+6. Definir el tamaño del disco (mínimo recomendado por el docente: 25 GB para la única particion primaria) y hacer clic en **Next**.
 7. Hacer clic en **"Customize Hardware"**: asignar al menos 2 GB de RAM y 1 procesador.
 8. Hacer clic en **Finish** y luego en **"Power On this virtual machine"**.
 9. En el instalador: elegir idioma → **"Instalación personalizada"** → seleccionar la partición de disco.
-10. Esperar que termine la instalación y establecer la contraseña del Administrador.
+10. Esperar que termine la instalación y establecer la contraseña del Administrador. Además instalar las VMware Tools.
 
 ### Pasos para instalar Windows Server 2012 en VirtualBox
 
@@ -17,7 +17,7 @@
 2. Abrir VirtualBox y hacer clic en **"Nueva"**.
 3. Poner un nombre, tipo **"Microsoft Windows"**, versión **"Windows 2012 (64-bit)"** y hacer clic en **Siguiente**.
 4. Asignar memoria RAM (mínimo recomendado: 2 GB).
-5. Crear un disco duro virtual (tipo VDI, tamaño dinámico, mínimo 40 GB).
+5. Crear un disco duro virtual (tipo VDI, tamaño dinámico, mínimo 25 GB).
 6. Con la VM creada, ir a **Configuración → Almacenamiento**, hacer clic en el ícono del disco vacío y cargar la ISO.
 7. Iniciar la máquina y seguir el instalador: elegir idioma → **"Instalación personalizada"** → seleccionar partición.
 8. Esperar que termine la instalación y establecer la contraseña del Administrador.
