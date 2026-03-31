@@ -34,27 +34,60 @@ graph LR
 ## Beneficios
 
 ```mermaid
-%%{init: {"theme":"base","themeVariables":{"primaryColor":"#1f2937","primaryTextColor":"#ffffff","primaryBorderColor":"#94a3b8","lineColor":"#94a3b8","secondaryColor":"#111827","tertiaryColor":"#0b1220","textColor":"#ffffff"}}}%%
-mindmap
-  root((Beneficios DHCP))
-    ✅ Asignación Automática
-      Sin intervención manual
-      Configurable
-    ✅ Evita Errores
-      No hay configuraciones manuales incorrectas
-      Consistencia en la red
-    ✅ Reduce Administración
-      Menos tiempo configurando
-      Gestión centralizada
-    ✅ Reutilización de IPs
-      Mediante concesiones
-      Mejor aprovechamiento
-    ✅ Facilita Conexiones
-      Dispositivos se conectan automáticamente
-      Plug & Play
-    ✅ Evita Conflictos
-      No hay IPs duplicadas
-      Control automático
+%%{init: {"theme":"base","themeVariables":{"lineColor":"#94a3b8"}}}%%
+graph TD
+  R["Beneficios DHCP"]
+
+  A["Asignación Automática"]
+  A1["Sin intervención manual"]
+  A2["Configurable"]
+
+  B["Evita Errores"]
+  B1["No hay configuraciones manuales incorrectas"]
+  B2["Consistencia en la red"]
+
+  C["Reduce Administración"]
+  C1["Menos tiempo configurando"]
+  C2["Gestión centralizada"]
+
+  D["Reutilización de IPs"]
+  D1["Mediante concesiones"]
+  D2["Mejor aprovechamiento"]
+
+  E["Facilita Conexiones"]
+  E1["Dispositivos se conectan automáticamente"]
+  E2["Plug and Play"]
+
+  F["Evita Conflictos"]
+  F1["No hay IPs duplicadas"]
+  F2["Control automático"]
+
+  R --> A
+  A --> A1
+  A --> A2
+
+  R --> B
+  B --> B1
+  B --> B2
+
+  R --> C
+  C --> C1
+  C --> C2
+
+  R --> D
+  D --> D1
+  D --> D2
+
+  R --> E
+  E --> E1
+  E --> E2
+
+  R --> F
+  F --> F1
+  F --> F2
+
+  classDef allnodes fill:#111827,stroke:#94a3b8,color:#ffffff;
+  class R,A,A1,A2,B,B1,B2,C,C1,C2,D,D1,D2,E,E1,E2,F,F1,F2 allnodes;
 ```
 
 ---
@@ -490,32 +523,68 @@ Si tienes:
 ## 📚 Resumen General
 
 ```mermaid
-%%{init: {"theme":"base","themeVariables":{"primaryColor":"#1f2937","primaryTextColor":"#ffffff","primaryBorderColor":"#94a3b8","lineColor":"#94a3b8","secondaryColor":"#111827","tertiaryColor":"#0b1220","textColor":"#ffffff"}}}%%
-mindmap
-  root((DHCP))
-    Conceptos
-      Protocolo automático
-      Asigna IPs dinámicamente
-      Usa concesiones temporales
-    Procesos
-      DORA (4 pasos)
-      Generación de concesión
-      Renovación automática
-    Instalación
-      Configurar IP fija
-      Instalar rol DHCP
-      Crear ámbito
-      Activar servicio
-    Administración
-      Ver concesiones
-      Exclusiones
-      Reservas de IP
-      Monitorear clientes
-    Comandos
-      ipconfig
-      ipconfig /all
-      ipconfig /release
-      ipconfig /renew
+%%{init: {"theme":"base","themeVariables":{"lineColor":"#94a3b8"}}}%%
+graph TD
+  R["DHCP"]
+
+  C["Conceptos"]
+  C1["Protocolo automático"]
+  C2["Asigna IPs dinámicamente"]
+  C3["Usa concesiones temporales"]
+
+  P["Procesos"]
+  P1["DORA (4 pasos)"]
+  P2["Generación de concesión"]
+  P3["Renovación automática"]
+
+  I["Instalación"]
+  I1["Configurar IP fija"]
+  I2["Instalar rol DHCP"]
+  I3["Crear ámbito"]
+  I4["Activar servicio"]
+
+  A["Administración"]
+  A1["Ver concesiones"]
+  A2["Exclusiones"]
+  A3["Reservas de IP"]
+  A4["Monitorear clientes"]
+
+  M["Comandos"]
+  M1["ipconfig"]
+  M2["ipconfig /all"]
+  M3["ipconfig /release"]
+  M4["ipconfig /renew"]
+
+  R --> C
+  C --> C1
+  C --> C2
+  C --> C3
+
+  R --> P
+  P --> P1
+  P --> P2
+  P --> P3
+
+  R --> I
+  I --> I1
+  I --> I2
+  I --> I3
+  I --> I4
+
+  R --> A
+  A --> A1
+  A --> A2
+  A --> A3
+  A --> A4
+
+  R --> M
+  M --> M1
+  M --> M2
+  M --> M3
+  M --> M4
+
+  classDef allnodes fill:#111827,stroke:#94a3b8,color:#ffffff;
+  class R,C,C1,C2,C3,P,P1,P2,P3,I,I1,I2,I3,I4,A,A1,A2,A3,A4,M,M1,M2,M3,M4 allnodes;
 
 ```
 
