@@ -24,8 +24,6 @@ Se convirtió en un estándar porque facilita la administración de redes sin ne
 graph LR
     A["🖥️ Cliente DHCP<br/>(solicita IP)"] -->|"Mensajes DHCP"| B["⚙️ Servidor DHCP<br/>(asigna IP)"]
     B -->|"Confirmación"| A
-    style A fill:#e1f5ff
-    style B fill:#fff3e0
 ```
 
 > 👉 **Importante:** Todo servicio DHCP necesita estos dos roles funcionando correctamente.
@@ -125,11 +123,6 @@ graph TD
     B -->|"Servidor responde"| C["Concesión extendida<br/>Automático"]
     
     D["Concesión a punto de expirar<br/>(T₇/8)"] -->|"Sin respuesta"| E["IP liberada<br/>Disponible otra vez"]
-    
-    style A fill:#c8e6c9
-    style C fill:#c8e6c9
-    style D fill:#ffccbc
-    style E fill:#ffcdd2
 ```
 
 > 👉 **Este proceso es automático** y ocurre antes de que expire la concesión, durante el tiempo de vida de la IP.
@@ -143,11 +136,15 @@ graph TD
 #### ✅ Requisitos Iniciales
 
 ```mermaid
-checklist
-  required Permisos de administrador
-  required IP fija en el servidor
-  required Conexión de red activa
-  optional Firewall (puede necesitar ajustes)
+graph TD
+    R1["Permisos de administrador"]
+    R2["IP fija en el servidor"]
+    R3["Conexión de red activa"]
+    R4["Firewall revisado<br/>(si bloquea pruebas)"]
+
+    R1 --> R2
+    R2 --> R3
+    R3 --> R4
 ```
 
 ---
@@ -212,10 +209,6 @@ graph TD
     F --> G["Siguiente"]
     G --> H["Instalar"]
     H --> I["Completado ✓"]
-    
-    style A fill:#bbdefb
-    style E fill:#fff9c4
-    style I fill:#c8e6c9
 ```
 
 ---
@@ -317,7 +310,7 @@ Una vez instalado, accede desde:
 ```
 Herramientas → DHCP
     ↓
-DHCP → IPv4 → (Amblaşınız configurado)
+DHCP → IPv4 → (Tu ámbito configurado)
 ```
 
 ### 📦 Conjunto de Direcciones (Address Pool)
@@ -335,9 +328,6 @@ graph LR
     C --> C1["Servidores"]
     C --> C2["Impresoras"]
     C --> C3["Equipos importantes"]
-    
-    style B fill:#c8e6c9
-    style C fill:#ffccbc
 ```
 
 **Ejemplo:**
@@ -378,9 +368,6 @@ graph TD
     A["Sin Reserva<br/>IP asignada puede cambiar"] -.->|"Después de expirar"| B["IP diferente"]
     
     C["Con Reserva<br/>IP fija para ese dispositivo"] -->|"Siempre"| D["Misma IP"]
-    
-    style B fill:#ffccbc
-    style D fill:#c8e6c9
 ```
 
 ### 🎯 Casos de Uso
@@ -401,11 +388,15 @@ Las reservas son útiles para:
 Para crear una reserva debes cumplir:
 
 ```mermaid
-checklist
-  required La IP debe estar en el rango del ámbito
-  required Identificar el dispositivo por MAC
-  required El dispositivo debe tener conexión activa
-  optional Nombre descriptivo de la reserva
+graph TD
+    Q1["IP dentro del rango del ámbito"]
+    Q2["Identificar dispositivo por MAC"]
+    Q3["Dispositivo con conexión activa"]
+    Q4["Nombre descriptivo (opcional)"]
+
+    Q1 --> Q2
+    Q2 --> Q3
+    Q3 --> Q4
 ```
 
 ---
@@ -472,9 +463,6 @@ Asociar con DHCP:       ✅ DHCP
 graph LR
     A["Dispositivo<br/>MAC: 00-1A-2B-3C-4D-5E"] -->|"Reservado"| B["IP Fija<br/>192.168.1.110"]
     B -->|"Siempre"| C["Impresora<br/>en red"]
-    
-    style B fill:#fff9c4
-    style C fill:#c8e6c9
 ```
 
 **Resultado:**
