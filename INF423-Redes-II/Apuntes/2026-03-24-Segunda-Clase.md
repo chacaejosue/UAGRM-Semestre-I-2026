@@ -21,6 +21,7 @@ Se convirtió en un estándar porque facilita la administración de redes sin ne
 ### 🔄 Modelo de Trabajo
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#1f2937","primaryTextColor":"#ffffff","primaryBorderColor":"#94a3b8","lineColor":"#94a3b8","secondaryColor":"#111827","tertiaryColor":"#0b1220","textColor":"#ffffff"}}}%%
 graph LR
     A["🖥️ Cliente DHCP<br/>(solicita IP)"] -->|"Mensajes DHCP"| B["⚙️ Servidor DHCP<br/>(asigna IP)"]
     B -->|"Confirmación"| A
@@ -33,6 +34,7 @@ graph LR
 ## Beneficios
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#1f2937","primaryTextColor":"#ffffff","primaryBorderColor":"#94a3b8","lineColor":"#94a3b8","secondaryColor":"#111827","tertiaryColor":"#0b1220","textColor":"#ffffff"}}}%%
 mindmap
   root((Beneficios DHCP))
     ✅ Asignación Automática
@@ -82,6 +84,7 @@ Esto permite:
 El proceso de asignación de IP se conoce como **DORA**:
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#1f2937","primaryTextColor":"#ffffff","primaryBorderColor":"#94a3b8","lineColor":"#94a3b8","secondaryColor":"#111827","tertiaryColor":"#0b1220","textColor":"#ffffff"}}}%%
 sequenceDiagram
     participant Cliente
     participant Red as Red Local
@@ -118,6 +121,7 @@ El cliente utiliza **mensajes de difusión (broadcast)** para comunicarse en la 
 ### 🔁 Proceso de Renovación
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#1f2937","primaryTextColor":"#ffffff","primaryBorderColor":"#94a3b8","lineColor":"#94a3b8","secondaryColor":"#111827","tertiaryColor":"#0b1220","textColor":"#ffffff"}}}%%
 graph TD
     A["IP Activa<br/>(Concesión vigente)"] -->|"T₁/2 de la concesión"| B["Cliente solicita<br/>RENEW"]
     B -->|"Servidor responde"| C["Concesión extendida<br/>Automático"]
@@ -136,6 +140,7 @@ graph TD
 #### ✅ Requisitos Iniciales
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#1f2937","primaryTextColor":"#ffffff","primaryBorderColor":"#94a3b8","lineColor":"#94a3b8","secondaryColor":"#111827","tertiaryColor":"#0b1220","textColor":"#ffffff"}}}%%
 graph TD
     R1["Permisos de administrador"]
     R2["IP fija en el servidor"]
@@ -200,6 +205,7 @@ ping 192.168.1.X   # Probar conectividad
 En **Administrador del Servidor**, sigue estos pasos:
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#1f2937","primaryTextColor":"#ffffff","primaryBorderColor":"#94a3b8","lineColor":"#94a3b8","secondaryColor":"#111827","tertiaryColor":"#0b1220","textColor":"#ffffff"}}}%%
 graph TD
     A["Abrir<br/>Administrador del Servidor"] --> B["Agregar roles<br/>y características"]
     B --> C["Seleccionar:<br/>Instalación basada en roles"]
@@ -318,6 +324,7 @@ DHCP → IPv4 → (Tu ámbito configurado)
 Aquí visualizas:
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#1f2937","primaryTextColor":"#ffffff","primaryBorderColor":"#94a3b8","lineColor":"#94a3b8","secondaryColor":"#111827","tertiaryColor":"#0b1220","textColor":"#ffffff"}}}%%
 graph LR
     A["Address Pool<br/>(Rango Total)"] --> B["Direcciones<br/>Distribuidas"]
     A --> C["Direcciones<br/>Excluidas"]
@@ -364,6 +371,7 @@ Aquí ves los contratos activos de clientes conectados:
 Las **reservas** permiten que un dispositivo siempre tenga **la misma dirección IP** asignada, aunque sea automáticamente por DHCP.
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#1f2937","primaryTextColor":"#ffffff","primaryBorderColor":"#94a3b8","lineColor":"#94a3b8","secondaryColor":"#111827","tertiaryColor":"#0b1220","textColor":"#ffffff"}}}%%
 graph TD
     A["Sin Reserva<br/>IP asignada puede cambiar"] -.->|"Después de expirar"| B["IP diferente"]
     
@@ -388,6 +396,7 @@ Las reservas son útiles para:
 Para crear una reserva debes cumplir:
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#1f2937","primaryTextColor":"#ffffff","primaryBorderColor":"#94a3b8","lineColor":"#94a3b8","secondaryColor":"#111827","tertiaryColor":"#0b1220","textColor":"#ffffff"}}}%%
 graph TD
     Q1["IP dentro del rango del ámbito"]
     Q2["Identificar dispositivo por MAC"]
@@ -460,6 +469,7 @@ Asociar con DHCP:       ✅ DHCP
 ### 📌 Ejemplo Práctico Completo
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#1f2937","primaryTextColor":"#ffffff","primaryBorderColor":"#94a3b8","lineColor":"#94a3b8","secondaryColor":"#111827","tertiaryColor":"#0b1220","textColor":"#ffffff"}}}%%
 graph LR
     A["Dispositivo<br/>MAC: 00-1A-2B-3C-4D-5E"] -->|"Reservado"| B["IP Fija<br/>192.168.1.110"]
     B -->|"Siempre"| C["Impresora<br/>en red"]
@@ -480,6 +490,7 @@ Si tienes:
 ## 📚 Resumen General
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"primaryColor":"#1f2937","primaryTextColor":"#ffffff","primaryBorderColor":"#94a3b8","lineColor":"#94a3b8","secondaryColor":"#111827","tertiaryColor":"#0b1220","textColor":"#ffffff"}}}%%
 mindmap
   root((DHCP))
     Conceptos
