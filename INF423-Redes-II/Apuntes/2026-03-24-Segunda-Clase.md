@@ -12,6 +12,12 @@
 
 ---
 
+## Referencia Complementaria
+
+Para ampliar el estudio del tema y contar con una base de consulta adicional, puede revisarse el material recopilado en [NotebookLM: Apoyo complementario del apunte](https://notebooklm.google.com/notebook/44cdf1fe-cdb8-484f-9db1-fa58931c6067).
+
+---
+
 ## Conceptos Básicos
 
 **DHCP** (Dynamic Host Configuration Protocol) es un protocolo de nivel de aplicación que permite **asignar automáticamente direcciones IP y otros parámetros de red** a los dispositivos (clientes).
