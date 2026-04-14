@@ -8,7 +8,65 @@
 5. Administración de espacio en discos
 
 ---
+(esto forma parte de los apuntes, quiero que combines ambas cosas, como una especie de unión, colocando lo que en mis apuntes están con lo que hemos hecho aquí en este documento, que ha sido scado directamente de un documento pdf.
+esta sección es de posibles preguntas que nos dictó el docente 
+Cuál es la prime tarea que va a realizar el sistema de archivos cuando se le asigne una unidad? 
+1 Dividir todo espacio de la particion en bloques pequeños de igual tamaño. Se le conoce como bloques
+Cuál es el objetivo?
+- Mejorar la eficiendcia de la transferencia de informacion entre memoria y disco
+De qué tamaño los bloques? 
+mínimo 1 por lo general más de 1 sector del disco duro
+Qué tamaño tenía un sector del disco duro? 
+512 bytes
 
+Para el sistema de archivos su unidad mínima es 1 bloque, para el disco duro es 1 sector.
+Cuántoss bloques habrían o resultarían en una particion?
+- No se puede calcular, está en función al espacio de la particion y del taamaño del bloque definido por el Sistema de archivos
+
+2 Darle una forma
+bloque de arranque, superbloque, adm espacio libre, nodo1, dir raiz
+*hacerlo en forma de diagrama*
+este paso se le conoce como formatear, dar formato, formatear no es borrar, su efecto causa que se borren los datos
+3 Llevar el control de qué bloques se le han asignado a qué archivos
+Administracion de archivos, esta es la tarea más importante
+esta tercer tarea la vamos a estudiar en clases
+
+Metodos de asignacion, es el espacio quese les va a dar a qué archivo
+contigua, asigna bloques contiguos, juntos, bloques libres
+
+ventaja, solo necesita 2 datos, el numero del bloque del primer bloque y cuantos bloques ocupa
+implementacion sencilla
+
+tabla
+archivo empieza tamaño
+a         1        4
+b         5        3
+c         6        5   
+
+excelente desempeño de lectura
+excelente velicidad de acceso porque todo está junto
+desventaja
+fragmentacion intercalacion de espacios ocupados y libres y esos libres no se pueden usar a veces, porque el espacio libre disponible no es suficiente para esa tarea de esa aplicacion
+solamente este metodo se podria implementar para dvd/cd, en otras unidades no
+
+asignacion por lista enlazada
+consiste en que cada bloque viene a ser como un nodo
+*diagrama de un nodo que dentro tenga un dato y tenga el enlace*
+|dato|  | enlace----
+
+cada bloque se convierte en un nodo, su primer byte se separa para el enlace, para apuntar a otro bloque los bloqes tienen un id unico
+
+no es necesario que los bloques estén juntos, solo se necesita 1 solo dato, en qué bloque inicia
+
+ventajas
+aqui ya s epuee usar un bloque libre
+no se desperdicia espacio
+ no necesita 2 datos, solo necesita 1
+ desventajas
+ lo malo es que no hay accceso aleatorio para acceder al bloque n hay que leer los anteriores n-1
+ la cantidad de datos almacenados ya no es potencia de 2
+ 
+ 2 ^n-1 operacion para que el procesador lo resuenva 2^n, si le dieramos esto le duplicamos el trabajo al procesador)
 ## 1. 🗂 Organización del Sistema de Archivos
 
 - Cada partición define su propio **sistema de archivos (S.A.)**
